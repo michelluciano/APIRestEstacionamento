@@ -1,0 +1,22 @@
+package br.com.everis.estacionamento.Utils;
+
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.everis.estacionamento.model.Categoria;
+import br.com.everis.estacionamento.repository.CategoriaRepository;
+
+public class DummyDate {
+
+	@Autowired
+	CategoriaRepository categoriaRepository;
+	
+	@PostConstruct
+	public void saveCategoria() {
+		List<Categoria> categoriaList = new ArrayList<>;
+	}
+	
+}

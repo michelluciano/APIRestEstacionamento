@@ -1,0 +1,26 @@
+package br.com.everis.estacionamento.controller.form;
+
+import br.com.everis.estacionamento.model.FormaDePagamento;
+import br.com.everis.estacionamento.repository.FormaPagamentoRepository;
+
+public class FormapagamentoForm {
+	
+	private String descricao;
+	private String status;
+	public String getFpdescricao() {
+		return fpdescricao;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setFpdescricao(String fpdescricao) {
+		this.fpdescricao = fpdescricao;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public FormaDePagamento converter( FormaPagamentoRepository fpagamentoRepository) {
+		return FormaDePagamento(descricao, status);
+	}
+	
+}

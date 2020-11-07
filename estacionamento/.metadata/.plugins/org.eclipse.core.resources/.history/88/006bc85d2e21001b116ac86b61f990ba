@@ -1,0 +1,28 @@
+package br.com.everis.estacionamento.config.validacao;
+
+public class ErroInsercaoDto {
+	
+	private String campo;
+	private String erro;
+	
+	public ErroInsercaoDto(String string, String mensagem) {
+		this.campo = campo;
+		this.erro = erro;
+	}
+
+	public String getCampo() {
+		return campo;
+	}
+
+	public String getErro() {
+		return erro;
+	}
+
+	public void setCampo(String campo) {
+		this.campo = campo;
+	}
+
+	public void setErro(String erro) {
+		this.erro = erro;
+	}
+}

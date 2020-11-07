@@ -1,0 +1,23 @@
+package br.com.everis.estacionamento.controller.form;
+
+public class UsuarioForm {
+	
+	private String nome;
+	private String perfil;
+	
+	public String getNome() {
+		return nome;
+	}
+	public String getPerfil() {
+		return perfil;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+	
+	
+
+}

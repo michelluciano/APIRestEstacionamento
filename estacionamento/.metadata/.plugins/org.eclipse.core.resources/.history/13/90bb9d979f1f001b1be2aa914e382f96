@@ -1,0 +1,14 @@
+package br.com.everis.estacionamento.service;
+
+import java.util.List;
+
+
+public interface VeiculoService {
+	
+	List<VeiculoService> findAll(); 
+	VeiculoService findById(Long Idveiculo);
+	
+	VeiculoService save(VeiculoService veiculo);
+
+
+}

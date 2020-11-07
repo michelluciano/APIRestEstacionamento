@@ -1,0 +1,5 @@
+package br.com.everis.estacionamento.controller.form;
+
+public class AtualizaVeiculoForm {
+
+}

@@ -1,0 +1,65 @@
+package br.com.everis.estacionamento.Utils;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.everis.estacionamento.model.Categoria;
+import br.com.everis.estacionamento.model.Veiculo;
+import br.com.everis.estacionamento.repository.CategoriaRepository;
+
+public class DummyDate {
+
+	@Autowired
+	CategoriaRepository categoriaRepository;
+	
+	@PostConstruct
+	public void saveCategoria() {
+		
+		//popula categoria
+		List<Categoria> categoriaList = new ArrayList<>();
+		Categoria cat1 = new Categoria();
+		cat1.setDescricao("Motocicleta");
+		//cat1.setCatStatus(new );
+		cat1.setValorhora(new BigDecimal(2.0));
+				
+		Categoria cat2 = new Categoria();
+		cat1.setDescricao("Utilitário");
+		//cat1.setCatStatus(new );
+		cat1.setValorhora(new BigDecimal(5.0));
+				
+		Categoria cat3 = new Categoria();
+		cat1.setDescricao("Camionete");
+		//cat1.setCatStatus(new );
+		cat1.setValorhora(new BigDecimal(7.0));
+		
+		//popula veiculo**************************************************
+		List<Veiculo> veiculoList = new ArrayList<>();
+		Veiculo vei1 = new Veiculo();
+		vei1.setPlacaveiculo("imp-8126");
+		vei1.setMarcaveiculo("FIAT");
+		vei1.setModeloveiculo("UNO");
+		vei1.setCorveiculo("Branco");
+		vei1.setCategoria(categoria);
+		
+		Veiculo vei2 = new Veiculo();
+		vei2.setPlacaveiculo("imp-8126");
+		vei2.setMarcaveiculo("FIAT");
+		vei2.setModeloveiculo("UNO");
+		vei2.setCorveiculo("Branco");
+		vei2.setCategoria(categoria);
+		
+		Veiculo vei3 = new Veiculo();
+		vei3.setPlacaveiculo("imp-8126");
+		vei3.setMarcaveiculo("FIAT");
+		vei3.setModeloveiculo("UNO");
+		vei3.setCorveiculo("Branco");
+		vei3.setCategoria(categoria);
+		
+	}
+	
+}

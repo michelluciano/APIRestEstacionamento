@@ -1,0 +1,10 @@
+package br.com.everis.estacionamento.controller.form;
+
+public class FormapagamentoForm {
+	
+	private String fpdescricao;
+	private String status;
+	
+	
+
+}

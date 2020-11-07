@@ -1,0 +1,15 @@
+package br.com.everis.estacionamento.model;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class Usuario {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idusario;
+	private String usuarioNome;
+	private String usuarioPerfil;
+
+}

@@ -1,0 +1,29 @@
+package br.com.everis.estacionamento.controller.dto;
+
+import java.math.BigDecimal;
+
+import br.com.everis.estacionamento.model.Categoria;
+
+public class CategoriaDto {
+	
+	private Long id;
+	private String descricao;
+	private double valorhora;
+	
+	public CategoriaDto(Categoria categoria) {
+		this.id = categoria.getIdcategoria();
+		this.descricao = categoria.getDescricao();
+		
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public double getValorhora() {
+		return valorhora;
+	}
+	
+}

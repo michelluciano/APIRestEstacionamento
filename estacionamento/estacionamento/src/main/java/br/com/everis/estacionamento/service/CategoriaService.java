@@ -1,0 +1,14 @@
+package br.com.everis.estacionamento.service;
+
+import java.util.List;
+
+import br.com.everis.estacionamento.model.Categoria;
+
+public interface CategoriaService {
+	
+	List<Categoria> findAll();  // metodo que retorna uma lista de categoria
+	Categoria findById(long IdCategoria);// retorna por ID
+	
+	Categoria save(Categoria categoria);
+
+}

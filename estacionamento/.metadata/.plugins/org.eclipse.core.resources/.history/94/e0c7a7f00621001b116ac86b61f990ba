@@ -1,0 +1,31 @@
+package br.com.everis.estacionamento.controller.form;
+
+import java.math.BigDecimal;
+
+public class CategoriaForm {
+	
+	private String descricao;
+	private String status;
+	private BigDecimal valorhora;
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public BigDecimal getValorhora() {
+		return valorhora;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public void setValorhora(BigDecimal valorhora) {
+		this.valorhora = valorhora;
+	}
+	
+	
+}

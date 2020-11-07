@@ -1,0 +1,15 @@
+package br.com.everis.estacionamento.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.everis.estacionamento.repository.CategoriaRepository;
+
+public class CategoriaController {
+	@Autowired
+	private CategoriaRepository repository;
+	
+	public void teste() {
+		repository.
+	}
+
+}

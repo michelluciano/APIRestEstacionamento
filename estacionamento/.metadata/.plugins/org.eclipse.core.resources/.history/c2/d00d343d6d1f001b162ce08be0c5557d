@@ -1,0 +1,29 @@
+package br.com.everis.estacionamento.model;
+
+import java.math.BigDecimal;
+import java.sql.Time;
+import java.time.LocalDateTime;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class Ticket {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idTicket;
+	
+	@Enumerated(EnumType.STRING)
+	private Ticketstatus ticketStatus;
+	
+	private LocalDateTime ticketdt_entrada;
+	private LocalDateTime ticketdt_saida;
+	private BigDecimal ticketValorTotal;
+	private Time ticketTempoDecorrido;
+	
+	
+	
+}

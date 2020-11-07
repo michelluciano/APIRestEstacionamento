@@ -1,0 +1,49 @@
+package br.com.everis.estacionamento.controller.form;
+
+import br.com.everis.estacionamento.model.Veiculo;
+
+public class VeiculoForm {
+	
+	private String placa;
+	private String marca;
+	private String modelo;
+	private String cor;
+	private String descricaoCategoria;
+	
+	// getters e setters
+	public String getPlaca() {
+		return placa;
+	}
+	public String getMarca() {
+		return marca;
+	}
+	public String getModelo() {
+		return modelo;
+	}
+	public String getCor() {
+		return cor;
+	}
+	public String getDescricaoCategoria() {
+		return descricaoCategoria;
+	}
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+	public void setDescricaoCategoria(String descricaoCategoria) {
+		this.descricaoCategoria = descricaoCategoria;
+	}
+	public Veiculo converter() {
+		return new Veiculo();
+	}
+	
+	
+}

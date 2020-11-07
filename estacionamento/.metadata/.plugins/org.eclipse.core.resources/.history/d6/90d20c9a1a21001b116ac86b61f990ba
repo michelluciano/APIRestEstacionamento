@@ -1,0 +1,16 @@
+package br.com.everis.estacionamento.controller.form;
+
+public class TicketForm {
+
+	private String placaveiculo;
+
+	public String getPlacaveiculo() {
+		return placaveiculo;
+	}
+
+	public void setPlacaveiculo(String placaveiculo) {
+		this.placaveiculo = placaveiculo;
+	}
+	
+	
+}
