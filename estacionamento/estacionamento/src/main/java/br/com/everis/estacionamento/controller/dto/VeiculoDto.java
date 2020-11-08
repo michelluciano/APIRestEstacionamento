@@ -3,6 +3,8 @@ package br.com.everis.estacionamento.controller.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+
 import br.com.everis.estacionamento.model.Veiculo;
 
 public class VeiculoDto {
@@ -40,6 +42,10 @@ public class VeiculoDto {
 
 	public static List<VeiculoDto> converter(List<Veiculo> veiculos) {
 		return veiculos.stream().map(VeiculoDto::new).collect(Collectors.toList());
+	}
+
+	public static Page<VeiculoDto> converterp(Page<Veiculo> veiculos) {
+		return veiculos.map(VeiculoDto::new);
 	}
 
 

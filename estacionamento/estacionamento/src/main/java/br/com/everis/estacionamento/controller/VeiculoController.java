@@ -8,6 +8,12 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -26,7 +33,6 @@ import br.com.everis.estacionamento.controller.form.VeiculoForm;
 import br.com.everis.estacionamento.model.Veiculo;
 import br.com.everis.estacionamento.repository.CategoriaRepository;
 import br.com.everis.estacionamento.repository.VeiculoRepository;
-import ch.qos.logback.core.joran.conditional.IfAction;
 
 @RestController
 @RequestMapping("/veiculo")
@@ -38,8 +44,32 @@ public class VeiculoController {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
-	//Listando todos os veiculos 
+	
+	
+	//Listando todos os veiculos com paginação
 	@GetMapping
+	@Cacheable(value = "listaDeVeiculos")
+	public Page<VeiculoDto> lista(@PageableDefault(page = 0, size = 10) Pageable paginacao){ 
+		
+		//Pageable paginacao = PageRequest.of(pagina, qtd);
+		
+		//if (placaVeiculo == null) {
+			Page<Veiculo> veiculos = veiculoRepository.findAll(paginacao);
+			return VeiculoDto.converterp(veiculos);
+//		} 
+//		else{
+//			Page<Veiculo> veiculos = veiculoRepository.findByplacaveiculo(placaVeiculo, paginacao);
+//			return VeiculoDto.converterp(veiculos);
+//			}
+		
+			//List<Veiculo> veiculos = veiculoRepository.findByCategoria_valorhora(placaVeiculo);
+			//return VeiculoDto.converter(veiculos);
+	}
+	
+	
+	
+	//Listando veiculos por placa
+	@GetMapping("/placa")
 	public List<VeiculoDto> lista(String placaVeiculo){
 		if (placaVeiculo == null) {
 			List<Veiculo> veiculos = veiculoRepository.findAll();
@@ -56,6 +86,7 @@ public class VeiculoController {
 	// cadastrando um novo veiculo
 	@PostMapping
 	@Transactional
+	@CacheEvict(value = "listaDeVeiculos", allEntries = true)
 	public ResponseEntity<VeiculoDto> cadastrar(@RequestBody @Valid VeiculoForm form, UriComponentsBuilder uriBuilder) {
 		Veiculo veiculo = form.converter(categoriaRepository);
 		veiculoRepository.save(veiculo);
@@ -84,6 +115,7 @@ public class VeiculoController {
 	// atualizando um veiculo
 	@PutMapping("/{id}")
 	@Transactional
+	@CacheEvict(value = "listaDeVeiculos", allEntries = true)
 	public ResponseEntity<VeiculoDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizaVeiculoForm form){
 		Optional<Veiculo> optional = veiculoRepository.findById(id);
 		if (optional.isPresent()) {
@@ -96,6 +128,7 @@ public class VeiculoController {
 	//removendo um veiculo
 	@DeleteMapping("/{id}")
 	@Transactional
+	@CacheEvict(value = "listaDeVeiculos", allEntries = true)
 	public ResponseEntity<?> remover(@PathVariable long id){
 		Optional<Veiculo> optional = veiculoRepository.findById(id);
 		if (optional.isPresent()) {

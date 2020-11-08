@@ -42,7 +42,7 @@ public class DummyDate {
 	@Autowired
 	TicketRepository ticketRepository;
 	
-	@PostConstruct
+	//@PostConstruct
 	public void saveCategoria() {
 		 
 		//popula categoria
