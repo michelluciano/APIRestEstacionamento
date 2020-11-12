@@ -1,0 +1,10 @@
+package br.com.everis.estacionamento.controller.dto;
+
+public class CategoriaDto {
+	
+	private Long id;
+	private String descricao;
+	private double valorhora;
+	
+	
+}

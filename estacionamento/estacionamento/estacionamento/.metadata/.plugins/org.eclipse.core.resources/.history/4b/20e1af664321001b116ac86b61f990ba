@@ -1,0 +1,97 @@
+package br.com.everis.estacionamento.controller;
+
+import java.net.URI;
+import java.util.List;
+
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import br.com.everis.estacionamento.controller.dto.DetalheVeiculoDto;
+import br.com.everis.estacionamento.controller.dto.VeiculoDto;
+import br.com.everis.estacionamento.controller.form.AtualizaVeiculoForm;
+import br.com.everis.estacionamento.controller.form.VeiculoForm;
+import br.com.everis.estacionamento.model.Veiculo;
+import br.com.everis.estacionamento.repository.CategoriaRepository;
+import br.com.everis.estacionamento.repository.VeiculoRepository;
+
+@RestController
+@RequestMapping("/veiculo")
+public class VeiculoController {
+	
+	@Autowired
+	private VeiculoRepository veiculoRepository;
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository;
+	
+	//Listando todos os veiculos 
+	@GetMapping
+	public List<VeiculoDto> lista(String placaVeiculo){
+		if (placaVeiculo == null) {
+			List<Veiculo> veiculos = veiculoRepository.findAll();
+			return VeiculoDto.converter(veiculos);
+		} else{
+			List<Veiculo> veiculos = veiculoRepository.findByplacaveiculo(placaVeiculo);
+			return VeiculoDto.converter(veiculos);
+			}
+		
+			//List<Veiculo> veiculos = veiculoRepository.findByCategoria_valorhora(placaVeiculo);
+			//return VeiculoDto.converter(veiculos);
+	}
+	
+	// cadastrando um novo veiculo
+	@PostMapping
+	@Transactional
+	public ResponseEntity<VeiculoDto> cadastrar(@RequestBody @Valid VeiculoForm form, UriComponentsBuilder uriBuilder) {
+		Veiculo veiculo = form.converter(categoriaRepository);
+		veiculoRepository.save(veiculo);
+		URI uri = uriBuilder.path("/veiculo/{id}").buildAndExpand(veiculo.getIdveiculo()).toUri();
+		return ResponseEntity.created(uri).body(new VeiculoDto(veiculo));
+	}
+	
+	//Procurando um Veiculo por ID
+	@GetMapping("/{id}")
+	public VeiculoDto detalha(@PathVariable Long id) {
+		Veiculo veiculo = veiculoRepository.getOne(id);
+		return new VeiculoDto(veiculo);
+	}
+	
+	//Procurando um Veiculo por ID
+	@GetMapping("/detalhe/{id}")
+	public DetalheVeiculoDto detalhe(@PathVariable Long id) {
+		Veiculo veiculo = veiculoRepository.getOne(id);
+		return new DetalheVeiculoDto(veiculo);
+	}
+	
+	// atualizando um veiculo
+	@PutMapping("/{id}")
+	@Transactional
+	public ResponseEntity<VeiculoDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizaVeiculoForm form){
+		Veiculo veiculo = form.atualizar(id, veiculoRepository);
+		return ResponseEntity.ok(new VeiculoDto(veiculo));
+	}
+	
+	//removendo um veiculo
+	@DeleteMapping("/{id}")
+	@Transactional
+	public ResponseEntity<?> remover(@PathVariable long id){
+		veiculoRepository.deleteById(id);
+		System.out.println("Veiculo deletado");
+		return ResponseEntity.ok().build();
+		
+	}
+	
+	
+}

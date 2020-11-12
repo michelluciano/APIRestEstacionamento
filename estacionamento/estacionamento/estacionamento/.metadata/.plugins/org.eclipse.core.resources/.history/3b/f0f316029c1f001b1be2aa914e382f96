@@ -1,0 +1,9 @@
+package br.com.everis.estacionamento.service;
+
+import com.sun.tools.javac.util.List;
+
+public interface CategoriaService {
+	
+	List<Categoria> findAL
+
+}

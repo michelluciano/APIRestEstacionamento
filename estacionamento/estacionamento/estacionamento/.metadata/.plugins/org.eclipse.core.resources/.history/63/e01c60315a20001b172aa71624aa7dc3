@@ -1,0 +1,34 @@
+package br.com.everis.estacionamento.controller.dto;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import br.com.everis.estacionamento.model.Categoria;
+
+public class CategoriaDto {
+	
+	private Long id;
+	private String descricao;
+	private double valorhora;
+	
+	public CategoriaDto(Categoria categoria) {
+		this.id = categoria.getIdcategoria();
+		this.descricao = categoria.getDescricao();
+		
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public double getValorhora() {
+		return valorhora;
+	}
+
+	public static List<CategoriaDto> converter(List<Categoria> categorias) {
+		return categorias.stream().map(CategoriaDto::new).collect(Collectors.toList());
+	}
+	
+}

@@ -1,0 +1,20 @@
+package br.com.everis.estacionamento.controller.form;
+
+public class FormapagamentoForm {
+	
+	private String fpdescricao;
+	private String status;
+	public String getFpdescricao() {
+		return fpdescricao;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setFpdescricao(String fpdescricao) {
+		this.fpdescricao = fpdescricao;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+}

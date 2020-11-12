@@ -1,0 +1,30 @@
+package br.com.everis.estacionamento.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.everis.estacionamento.controller.dto.TicketDto;
+import br.com.everis.estacionamento.model.Ticket;
+import br.com.everis.estacionamento.model.Ticketstatus;
+import br.com.everis.estacionamento.repository.TicketRepository;
+
+@RestController
+public class TicketController {
+	
+	@Autowired
+	private TicketRepository ticketRepository;
+	
+	@RequestMapping("/ticket")
+	public List<TicketDto> lista (Ticketstatus status){
+		if (status == null) {
+			List<Ticket> ticket = ticketRepository.findAll();
+			return TicketDto.converter(ticket);
+		}else {
+			List<Ticket> ticket = ticketRepository.findAllByticketStatus(status);
+			return TicketDto.converter(ticket);
+		}
+	}
+}

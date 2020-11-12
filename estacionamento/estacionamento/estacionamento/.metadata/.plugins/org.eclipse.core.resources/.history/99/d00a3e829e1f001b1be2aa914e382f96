@@ -1,0 +1,12 @@
+package br.com.everis.estacionamento.service;
+
+import java.util.List;
+
+import br.com.everis.estacionamento.model.Usuario;
+
+public interface Usuario {
+	
+	List<Usuario> findAll();
+	
+
+}

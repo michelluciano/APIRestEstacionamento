@@ -1,0 +1,11 @@
+package br.com.everis.estacionamento.controller.dto;
+
+public class VeiculoDto {
+	
+	private Long id;
+	private String placaveiculo;
+	private String marcaveiculo;
+	private String modeloveiculo;
+	private String corveiculo;
+
+}

@@ -1,0 +1,34 @@
+package br.com.everis.estacionamento.controller.dto;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import br.com.everis.estacionamento.model.FormaDePagamento;
+import br.com.everis.estacionamento.model.Fpsatatus;
+
+public class FormapagamentoDto {
+	private long id;
+	private String descricao;
+	private Fpsatatus status;
+	
+	public FormapagamentoDto(FormaDePagamento formapagamento) {
+		this.id = formapagamento.getIdformadepagamento();
+		this.descricao = formapagamento.getFpdescricao();
+		this.status = formapagamento.getStatus();
+	}
+	
+	public long getId() {
+		return id;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public Fpsatatus getStatus() {
+		return status;
+	}
+	
+	public static List<FormapagamentoDto> converter(List<FormaDePagamento> formapagamaneto) {
+		return formapagamaneto.stream().map(FormapagamentoDto::new).collect(Collectors.toList());
+	}
+
+}

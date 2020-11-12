@@ -1,0 +1,9 @@
+package br.com.everis.estacionamento.config.security;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AutenticacaoService implements UserDetails{
+	
+}

@@ -1,0 +1,25 @@
+package br.com.everis.estacionamento.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.ViewNameMethodReturnValueHandler;
+
+import br.com.everis.estacionamento.repository.CategoriaRepository;
+import br.com.everis.estacionamento.service.CategoriaService;
+
+@Controller
+public class CategoriaController {
+	
+	@Autowired
+	CategoriaService categoriaService;
+	
+	public ModelAndView getCategorias() {
+		ModelAndView mv = new ModelAndView( "categorias");
+		List<Categoria> categorias = CategoriaService.findAll();
+		mv.addAObjects("categorias", categorias);
+		return mv;
+	}
+	
+
+}

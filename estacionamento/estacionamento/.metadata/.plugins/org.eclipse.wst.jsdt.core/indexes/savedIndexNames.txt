@@ -1,0 +1,6 @@
+INDEX VERSION 1.4+C:\backup\estacionamento\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2267806260.index
+40935853.index
+3344830284.index
+3421450912.index
+618674471.index

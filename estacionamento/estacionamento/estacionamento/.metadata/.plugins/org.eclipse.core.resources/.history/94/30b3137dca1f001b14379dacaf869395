@@ -1,0 +1,34 @@
+package br.com.everis.estacionamento.service.serviceimpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.everis.estacionamento.model.Veiculo;
+import br.com.everis.estacionamento.repository.VeiculoRepository;
+import br.com.everis.estacionamento.service.VeiculoService;
+
+public class VeiculoServiceImplem implements VeiculoService{
+	
+	@Autowired
+	VeiculoRepository veiculorepository;
+	
+	@Override
+	public List<Veiculo> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Veiculo findById(Long Idveiculo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Veiculo save(Veiculo veiculo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

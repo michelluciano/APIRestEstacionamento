@@ -1,0 +1,22 @@
+package br.com.everis.estacionamento.controller.dto;
+
+import java.math.BigDecimal;
+import java.sql.Time;
+import java.time.LocalDateTime;
+
+import br.com.everis.estacionamento.model.FormaDePagamento;
+import br.com.everis.estacionamento.model.Ticketstatus;
+import br.com.everis.estacionamento.model.Usuario;
+import br.com.everis.estacionamento.model.Veiculo;
+
+public class TicketDto {
+	private Long idTicket;
+	private Ticketstatus ticketStatus;
+	private LocalDateTime ticketdt_entrada;
+	private LocalDateTime ticketdt_saida;
+	private BigDecimal ticketValorTotal;
+	private Time ticketTempoDecorrido;
+	private Veiculo veiculo;
+	private FormaDePagamento formadepagamento;
+	private Usuario usuario;
+}

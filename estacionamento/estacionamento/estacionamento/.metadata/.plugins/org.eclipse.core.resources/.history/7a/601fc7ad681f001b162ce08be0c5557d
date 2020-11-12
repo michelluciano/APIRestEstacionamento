@@ -1,0 +1,9 @@
+package br.com.everis.estacionamento.model;
+
+public class FormaDePagamento {
+	
+	private Long idformadepagamento;
+	private String fpdescricao;
+	private Fpsatatus status;
+
+}

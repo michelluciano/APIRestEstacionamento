@@ -1,0 +1,14 @@
+package br.com.everis.estacionamento.service;
+
+import java.util.List;
+
+import br.com.everis.estacionamento.model.FormaPagamento;
+
+public interface FormaPagamentoService {
+	
+	List<FormaPagamento> findAll(); 
+	FormaPagamento findById(Long Idformapagamento);
+	
+	FormaPagamento save(FormaPagamento formapagamento); 
+
+}
